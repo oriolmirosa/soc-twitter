@@ -10,8 +10,8 @@ load("secrets.rda")
 
 #setup_twitter_oauth(consumer_key=consumerKey, consumer_secret=consumerSecret, access_token=access_token, access_secret=access_secret)
 
-#user <- getUser("familyunequal")
-user <- getUser("kjhealy")
+user <- getUser("familyunequal")
+# user <- getUser("kjhealy")
 
 sociologists <- list(user)
 otherfriends <- vector(mode="character", length=0)

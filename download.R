@@ -53,7 +53,7 @@ while (i <= length(sociologists)) {
   }
   follows[[i]] <- friends
   allfriends <- length(friends)
-  cat(paste0("\nJust downloaded ", sociologists[[i]]$screenName,"'s ", allfriends, " friends!"))
+  cat(paste0("\nJust downloaded sociologist #", i, " : ", sociologists[[i]]$screenName,"'s ", allfriends, " friends!"))
   for (friend in length(friends):1) {
     if (sum(laply(sociologists, function(x) grepl(friends[friend], x$id))) > 0) friends <- friends[-friend]
   }
@@ -78,14 +78,16 @@ while (i <= length(sociologists)) {
     if (class(user) == "try-error") next
     if (grepl("sociolog", user$description, ignore.case=TRUE) == TRUE) {
       sociologists[[length(sociologists)+1]] <- user
-      cat(paste0("\nFriends of #", i, ": ", sociologists[[i]]$screenName,". Added #", length(sociologists), ": ", user$screenName))
+      cat(paste0("\nFriends of sociologist #", i, ": ", sociologists[[i]]$screenName,". Added #", length(sociologists), ": ", user$screenName))
       new <- new + 1
     } else {
       otherfriends[length(otherfriends)+1] <- user$id
     }
   }
   cat(paste0("\n\n", new, " new sociologists added (", formatC(new/toanalyze*100, digits = 1, format='f'), "% of the ", toanalyze, " friends analyzed for this user)"))
-  cat(paste0("\n", toanalyze - new, " non-sociologist friends (", formatC((toanalyze - new)/toanalyze*100, digits = 1, format='f'), "% of the ", toanalyze, " friends analyzed for this user)\n"))
+  cat(paste0("\n", toanalyze - new, " non-sociologist friends (", formatC((toanalyze - new)/toanalyze*100, digits = 1, format='f'), "% of the ", toanalyze, " friends analyzed for this user)"))
+  cat(paste0("\nTotal number of sociologists at this point: ", length(sociologists)))
+  cat(paste0("\nTotal number of non-sociologist friends in the list to check at this point: ", length(otherfriends, "\n")))
   i = i + 1
 }
 

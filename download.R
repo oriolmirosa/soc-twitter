@@ -8,7 +8,7 @@ sink("soctwitter.log", append=FALSE, split=TRUE)
 
 load("secrets.rda")
 
-#setup_twitter_oauth(consumer_key=consumerKey, consumer_secret=consumerSecret, access_token=access_token, access_secret=access_secret)
+setup_twitter_oauth(consumer_key=consumerKey, consumer_secret=consumerSecret, access_token=access_token, access_secret=access_secret)
 
 #user <- getUser("familyunequal")
 user <- getUser("kjhealy")
@@ -87,7 +87,7 @@ while (i <= length(sociologists)) {
   cat(paste0("\n\n", new, " new sociologists added (", formatC(new/toanalyze*100, digits = 1, format='f'), "% of the ", toanalyze, " friends analyzed for this user)"))
   cat(paste0("\n", toanalyze - new, " non-sociologist friends (", formatC((toanalyze - new)/toanalyze*100, digits = 1, format='f'), "% of the ", toanalyze, " friends analyzed for this user)"))
   cat(paste0("\nTotal number of sociologists at this point: ", length(sociologists)))
-  cat(paste0("\nTotal number of non-sociologist friends in the list to check at this point: ", length(otherfriends, "\n")))
+  cat(paste0("\nTotal number of non-sociologist friends in the list to check at this point: ", length(otherfriends), "\n"))
   i = i + 1
 }
 

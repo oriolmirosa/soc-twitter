@@ -47,7 +47,7 @@ while (i <= length(sociologists)) {
   friends <- try(sociologists[[i]]$getFriendIDs(), silent=TRUE)
   id1 <- id1 - 1
   id2 <- id2 - 1
-  if (class(friends) == "try-error") {
+  if (class(friends) == "try-error" | length(friends) == 0) {
     cat(paste0("i: ", i, " - Error!"))
     next
   }
